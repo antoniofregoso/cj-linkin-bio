@@ -1,1 +1,1 @@
-export * from './LinkinBio'
+export * from './components/LinkinBio'
