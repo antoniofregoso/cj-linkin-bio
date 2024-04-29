@@ -1,18 +1,37 @@
 {
-  "name": "bj-link-in-bio",
+  "name": "@buyerjourney/bj-linkin-bio",
   "version": "1.0.0",
-  "description": "",
-  "main": "src/index.js",
+  "description": "link in bio component of the BuyerJourneyJS project",
+  "main": "dist/LinkinBio",
+  "module": "src/LinkinBio",
   "scripts": {
+    "prod": "esbuild src/LinkinBio.js --bundle --minify  --outfile=dist/LinkinBio.min.js",
+    "build": "esbuild src/LinkinBio.js --bundle  --outfile=dist/LinkinBio.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/antoniofregoso/bj-link-in-bio.git"
+    "url": "git+https://github.com/antoniofregoso/bj-linkin-bio.git"
   },
   "author": "Antonio Fregoso <antoniofregoso@protonmail.com>",
   "license": "GPL-3.0-or-later",
   "devDependencies": {
-    "esbuild": "^0.19.4"
-  }
+    "esbuild": "^0.20.1"
+  },
+  "dependencies": {
+    "@buyerjourney/bj-core": "^1.0.1",
+    "@fortawesome/fontawesome-svg-core": "^6.5.2",
+    "@fortawesome/free-brands-svg-icons": "^6.5.2",
+    "@fortawesome/free-solid-svg-icons": "^6.5.2"
+  },
+  "bugs": {
+    "url": "https://github.com/antoniofregoso/bj-linkin-bio/issues"
+  },
+  "homepage": "https://buyerjourney.ninja/bj-linkin-bio",
+  "keywords": [
+    "vanilla-javascripts",
+    "link in bio",
+    "funnels",
+    "touchpoints"
+  ]
 }
