@@ -5,8 +5,8 @@ Link in bio component of the BuyerJourneyJS project
 
 ## Functions
 1. Tree links can act as links or buttons and can contain a thumbnail.
-2. Accepts bulma styles and animations.
-3. customizable footer message and logo
+2. Accepts bulma styles and animations from BuyerJourneyJS.
+3. Customizable footer message and logo
 4. It may have a verified user symbol. Verified by who? By himself 😜
 5. Made in vanilla javascript.
 
