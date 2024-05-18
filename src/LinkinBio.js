@@ -45,7 +45,7 @@ export class LinkinBio extends AppElement {
         let icons = ''
         if(this.state.socialBar?.networks.length>0){
             this.state.socialBar?.networks.forEach(el=>{
-                if (el.includes('twitter')){
+                if (el.includes('x.com')){
                     icons += `<a class="p-1"  href="${el}">${icon(faSquareXTwitter, iconClasses).html[0]}</a>`
                 }else if (el.includes('threads')){
                     icons += `<a class="p-1"  href="${el}">${icon(faSquareThreads, iconClasses).html[0]}</a>`
