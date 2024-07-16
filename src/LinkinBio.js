@@ -1,7 +1,7 @@
 import { AppElement } from "@buyerjourney/bj-core";
 
 import { icon } from "@fortawesome/fontawesome-svg-core";
-import { faEnvelope, faCircleCheck } from '@fortawesome/free-solid-svg-icons';
+import { faEnvelope, faCircleCheck, faEllipsisVertical} from '@fortawesome/free-solid-svg-icons';
 import { faSquareXTwitter, faSquareFacebook, faSquareThreads, faSquareInstagram, faYoutube,  faLinkedin, faVk,
         faDiscord, faTwitch, faTiktok, faSquareWhatsapp, faSquareGithub, faSquareGitlab} from '@fortawesome/free-brands-svg-icons';
 
@@ -95,25 +95,30 @@ export class LinkinBio extends AppElement {
         if(this.state.links?.cards.length>0){
             this.state.links.cards.forEach(el=>{
                 let link = /* html */ `
-                ${el.href===undefined?`<button style="width:100%">`:`
-                <a href="${el.href}">`}
                     <div ${typeof el.id === 'undefined'?``:`id="${el.id}" style="cursor: pointer;" `}  ${this.getClasses(["card","mt-5"], this.state.links.classList)} ${this.setAnimation(this.state.links.animation)}>
                         <div class="card-content p-1">
                             <div class="media">
-                                ${el.imgSrc!=undefined?/* html */`
-                                <div class="media-left">
-                                    <figure class="image is-48x48">
-                                        <img src="${el.imgSrc}" alt="${el.text[this.state.context.lang]}">
-                                    </figure>   
-                                </div>                         
-                                `:``}
-                            <div class="media-content pt-3" style="min-height:48px">
-                                <p class="is-6">${el.text[this.state.context.lang]}</p>
+                                ${el.imgSrc!=undefined?`
+                                     ${el.href===undefined?`<button style="width:100%">`:`<a href="${el.href}">`}
+                                    <figure class="media-left">
+                                        <p class="image is-48x48">
+                                        <img src="${el.imgSrc}" />
+                                        </p>
+                                    </figure>${el.href===undefined?`</button>`:`</a>`}
+                                    `:''}                                
+                                <div class="media-content pt-3" style="min-height:48px">
+                                     ${el.href===undefined?`<button style="width:100%">`:`<a href="${el.href}" style="color: inherit; text-decoration: none;">`}
+                                    <p class="is-6">${el.text[this.state.context.lang]}</p>
+                                    ${el.href===undefined?`</button>`:`</a>`}
+                                </div>
+                                <figure class="media-right pt-1">
+                                    <p class="icon is-48x48 pt-3">
+                                    ${icon(faEllipsisVertical).html[0]}
+                                    </p>
+                                </figure>
                             </div>
                         </div>
                     </div>
-                </div>
-                ${el.href===undefined?`</button>`:`</a>`}
                 `
                 links += link;
                 if (typeof el.id != 'undefined'){
@@ -130,7 +135,7 @@ export class LinkinBio extends AppElement {
     render(){
         this.innerHTML =  /* html */`
         <div class="columns is-centered">
-            <div class="column is-two-fifths has-text-centered px-5">
+            <div class="column is-4 has-text-centered px-5" >
                 <figure class="image is-96x96 is-inline-block mt-6 " ${this.setAnimation(this.state.avatar?.animation)}>
                     <img ${this.getClasses([], this.state.avatar?.classList)} src="${this.state.avatar?.src}">
                 </figure>
