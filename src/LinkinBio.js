@@ -17,6 +17,7 @@ export class LinkinBio extends AppElement {
      */
     constructor(state={}){
         super();
+        this.eventName = "user:click-linkin-bio";
         this.state =this.initState(this.#default,state);
         this.getAttribute("id")||this.setAttribute("id",this.state.id||`component-${Math.floor(Math.random() * 100)}`);
     }
@@ -24,21 +25,42 @@ export class LinkinBio extends AppElement {
     #ok =  icon(faCircleCheck, {classes: ['fa-1x', 'has-text-link']}).html[0];
     
     handleEvent(event) {
-        if (event.type === "click") {
-              let eventName;
-              if(this.state.buttons.eventName===undefined){
-                eventName = "bj-click"
-              }else {
-                eventName = this.state.buttons.eventName
-              }
-              const bjClick = new CustomEvent(eventName,{
-              detail:{source:event.target.id},
-              bubbles: true,
-              composed: true
-              });
-              this.dispatchEvent(bjClick);
+        if(this.state.buttons?.eventName!=undefined){
+            this.eventName = this.state.buttons.eventName             
+          }
+        if (event.type === "click") { 
+            if (event.target.tagName==='path'||event.target.tagName==='svg'||event.target.tagName==='P'&&event.target.classList.contains( 'option' )){
+                const bjClick = new CustomEvent(this.eventName,{
+                detail:{source:event.target.closest('p').dataset.source},
+                bubbles: true,
+                composed: true
+                });
+                this.dispatchEvent(bjClick);
+            }else if (event.target.tagName==='IMG'||event.target.tagName==='P'&&event.target.classList.contains( 'action' )){
+               const bjClick = new CustomEvent(this.eventName,{
+                detail:{source:event.target.closest('BUTTON').dataset.source},
+                bubbles: true,
+                composed: true
+                });
+                this.dispatchEvent(bjClick);
+            }
         }
     }
+
+    addEvents(){
+        let buttons = this.querySelectorAll("button");
+        if (buttons.length>0){
+          buttons.forEach((item)=>{
+            item.addEventListener("click",this)
+          });    
+        }
+        let actions =  this.querySelectorAll(".option");
+        if (actions.length>0){
+            actions.forEach((item)=>{
+                item.addEventListener("click",this)
+              });    
+        }
+      }
     
     #getSocialBar(){
         let iconClasses = {classes: ['fa-2x', this.state.socialBar?.iconsColor!=undefined?this.state.socialBar.iconsColor:'has-text-white']};
@@ -98,21 +120,21 @@ export class LinkinBio extends AppElement {
                     <div ${typeof el.id === 'undefined'?``:`id="${el.id}" style="cursor: pointer;" `}  ${this.getClasses(["card","mt-5"], this.state.links.classList)} ${this.setAnimation(this.state.links.animation)}>
                         <div class="card-content p-1">
                             <div class="media">
-                                ${el.imgSrc!=undefined?`
-                                     ${el.href===undefined?`<button style="width:100%">`:`<a href="${el.href}">`}
+                                ${el.imgSrc!=undefined?`                                     
                                     <figure class="media-left">
-                                        <p class="image is-48x48">
-                                        <img src="${el.imgSrc}" />
-                                        </p>
-                                    </figure>${el.href===undefined?`</button>`:`</a>`}
-                                    `:''}                                
+                                        ${el.href===undefined?`<button style="width:100%" data-source="${el.id}">`:`<a href="${el.href}">`}
+                                        <p class="image is-48x48 action">
+                                        <img class="action" src="${el.imgSrc}" />
+                                        </p>${el.href===undefined?`</button>`:`</a>`}
+                                    `:''}     
+                                    </figure>                           
                                 <div class="media-content pt-3" style="min-height:48px">
-                                     ${el.href===undefined?`<button style="width:100%">`:`<a href="${el.href}" style="color: inherit; text-decoration: none;">`}
-                                    <p class="is-6">${el.text[this.state.context.lang]}</p>
+                                     ${el.href===undefined?`<button style="width:100%" data-source="${el.id}">`:`<a href="${el.href}" style="color: inherit; text-decoration: none;">`}
+                                    <p class="is-6 action">${el.text[this.state.context.lang]}</p>
                                     ${el.href===undefined?`</button>`:`</a>`}
                                 </div>
                                 <figure class="media-right pt-1">
-                                    <p class="icon is-48x48 pt-3">
+                                    <p class="icon is-48x48 pt-3 option" data-source="${el.href===undefined?'/':el.href}">
                                     ${icon(faEllipsisVertical).html[0]}
                                     </p>
                                 </figure>
