@@ -25,24 +25,31 @@ export class LinkinBio extends AppElement {
     #ok =  icon(faCircleCheck, {classes: ['fa-1x', 'has-text-link']}).html[0];
     
     handleEvent(event) {
-        if(this.state.buttons?.eventName!=undefined){
-            this.eventName = this.state.buttons.eventName             
+        if(this.state?.eventName!=undefined){
+            this.eventName = this.state.eventName             
           }
         if (event.type === "click") { 
             if (event.target.tagName==='path'||event.target.tagName==='svg'||event.target.tagName==='P'&&event.target.classList.contains( 'option' )){
                 const bjClick = new CustomEvent(this.eventName,{
-                detail:{source:event.target.closest('p').dataset.source},
+                detail:{link:event.target.closest('p').dataset.source, type:'share'},
                 bubbles: true,
                 composed: true
                 });
                 this.dispatchEvent(bjClick);
             }else if (event.target.tagName==='IMG'||event.target.tagName==='P'&&event.target.classList.contains( 'action' )){
                const bjClick = new CustomEvent(this.eventName,{
-                detail:{source:event.target.closest('BUTTON').dataset.source},
+                detail:{source:event.target.closest('BUTTON').dataset.source, type:'action'},
                 bubbles: true,
                 composed: true
                 });
                 this.dispatchEvent(bjClick);
+            }else if(event.target.classList.contains( 'lang' )){
+                const bjClick = new CustomEvent(this.eventName,{
+                    detail:{source:event.target.id.slice(4), type:'lang'},
+                    bubbles: true,
+                    composed: true
+                    });
+                    this.dispatchEvent(bjClick);
             }
         }
     }
@@ -53,12 +60,17 @@ export class LinkinBio extends AppElement {
           buttons.forEach((item)=>{
             item.addEventListener("click",this)
           });    
-        }
+        };
         let actions =  this.querySelectorAll(".option");
         if (actions.length>0){
             actions.forEach((item)=>{
                 item.addEventListener("click",this)
               });    
+        };
+        if (this.state.i18n?.lang!=undefined){
+            Object.entries(this.state.i18n.lang).forEach(([key, value])=>{  
+                this.querySelector(`#btn-${key}`).addEventListener("click",this)
+            });            
         }
       }
     
@@ -112,13 +124,31 @@ export class LinkinBio extends AppElement {
     `
     }
 
+    #getLang(){
+        let lngButtons = ``;
+        Object.entries(this.state.i18n.lang).forEach(([key, value])=>{
+            let focus = ['button', 'lang'];
+            if (key === this.state.context.lang ){focus.push('is-focused')}
+            lngButtons += `<button id="btn-${key}" ${this.getClasses(focus, this.state.i18n?.classList)}>${value}</button>`
+        });
+        return lngButtons;
+    }
+
+    #geti18n(){
+       return /* html */`
+        <div class="buttons buttons are-small is-centered">
+            ${this.#getLang()}
+        </div>
+       `
+    }
+
     #getLinks(){
         let links = ``;
         if(this.state.links?.cards.length>0){
             this.state.links.cards.forEach(el=>{
                 let link = /* html */ `
                     <div ${typeof el.id === 'undefined'?``:`id="${el.id}" style="cursor: pointer;" `}  ${this.getClasses(["card","mt-5"], this.state.links.classList)} ${this.setAnimation(this.state.links.animation)}>
-                        <div class="card-content p-1">
+                        <div class="card-content p-2">
                             <div class="media">
                                 ${el.imgSrc!=undefined?`                                     
                                     <figure class="media-left">
@@ -157,7 +187,7 @@ export class LinkinBio extends AppElement {
     render(){
         this.innerHTML =  /* html */`
         <div class="columns is-centered">
-            <div class="column is-4 has-text-centered px-5" >
+            <div class="column is-5 has-text-centered px-5" >
                 <figure class="image is-96x96 is-inline-block mt-6 " ${this.setAnimation(this.state.avatar?.animation)}>
                     <img ${this.getClasses([], this.state.avatar?.classList)} src="${this.state.avatar?.src}">
                 </figure>
@@ -171,9 +201,11 @@ export class LinkinBio extends AppElement {
                         </div>
                     </div>
                 </div>
+                ${this.state.i18n?.up===true?this.#geti18n():``}
                 ${this.state.socialBar?.up===true?this.#getSocialBar():``}
                 ${this.#getLinks()}
                 ${this.state.socialBar?.up!=true?this.#getSocialBar():``}
+                ${this.state.i18n?.up!=true?this.#geti18n():``}
                 ${this.state.footer?.src===undefined?``:`
                <div class="card mt-1" style="box-shadow: none; background-color:transparent;">
                     <div class="card-content">
