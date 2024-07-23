@@ -135,11 +135,16 @@ export class LinkinBio extends AppElement {
     }
 
     #geti18n(){
-       return /* html */`
-        <div class="buttons buttons are-small is-centered">
-            ${this.#getLang()}
-        </div>
-       `
+        if(this.state.i18n!=undefined){
+            return /* html */`
+            <div class="buttons buttons are-small is-centered">
+                ${this.#getLang()}
+            </div>
+        `;
+        }else{
+            return '';
+        }
+       
     }
 
     #getLinks(){
