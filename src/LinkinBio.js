@@ -128,23 +128,28 @@ export class LinkinBio extends AppElement {
         let lngButtons = ``;
         Object.entries(this.state.i18n.lang).forEach(([key, value])=>{
             let focus = ['button', 'lang'];
-            if (key === this.state.context.lang ){focus.push('is-focused')}
-            lngButtons += `<button id="btn-${key}" ${this.getClasses(focus, this.state.i18n?.classList)}>${value}</button>`
+            if (key === this.state.context.lang ){
+                if (this.state.i18n?.selectedClassList!=undefined){
+                    lngButtons += `<button id="btn-${key}" ${this.getClasses(focus, this.state.i18n?.selectedClassList)}>${value}</button>`
+                }else {
+                    focus.push('is-focused')
+                    lngButtons += `<button id="btn-${key}" ${this.getClasses(focus, this.state.i18n?.classList)}>${value}</button>`
+                }
+                focus.push('is-focused')
+            }else {
+                lngButtons += `<button id="btn-${key}" ${this.getClasses(focus, this.state.i18n?.classList)}>${value}</button>`
+            }
+            
         });
         return lngButtons;
     }
 
     #geti18n(){
-        if(this.state.i18n!=undefined){
-            return /* html */`
-            <div class="buttons buttons are-small is-centered">
-                ${this.#getLang()}
-            </div>
-        `;
-        }else{
-            return '';
-        }
-       
+       return /* html */`
+        <div class="buttons buttons are-small is-centered">
+            ${this.#getLang()}
+        </div>
+       `
     }
 
     #getLinks(){
