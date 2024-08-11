@@ -1,6 +1,6 @@
 {
   "name": "@buyerjourney/bj-linkin-bio",
-  "version": "1.4.0",
+  "version": "1.4.1",
   "description": "link in bio component of the BuyerJourneyJS project",
   "main": "dist/LinkinBio",
   "module": "src/LinkinBio",
