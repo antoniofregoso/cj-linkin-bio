@@ -31,7 +31,7 @@ export class LinkinBio extends AppElement {
         if (event.type === "click") { 
             if (event.target.tagName==='path'||event.target.tagName==='svg'||event.target.tagName==='P'&&event.target.classList.contains( 'option' )){
                 const bjClick = new CustomEvent(this.eventName,{
-                detail:{link:event.target.closest('p').dataset.source, type:'share'},
+                detail:{link:event.target.closest('p').dataset.share, type:'share', source:event.target.closest('p').dataset.source},
                 bubbles: true,
                 composed: true
                 });
@@ -126,24 +126,24 @@ export class LinkinBio extends AppElement {
 
     #getLang(){
         let lngButtons = ``;
-        if (this.state.i18n?.lang!=undefined){
-		Object.entries(this.state.i18n.lang).forEach(([key, value])=>{
-		    let focus = ['button', 'lang'];
-		    if (key === this.state.context.lang ){
-		        if (this.state.i18n?.selectedClassList!=undefined){
-		            lngButtons += `<button id="btn-${key}" ${this.getClasses(focus, this.state.i18n?.selectedClassList)}>${value}</button>`
-		        }else {
-		            focus.push('is-focused')
-		            lngButtons += `<button id="btn-${key}" ${this.getClasses(focus, this.state.i18n?.classList)}>${value}</button>`
-		        }
-		        focus.push('is-focused')
-		    }else {
-		        lngButtons += `<button id="btn-${key}" ${this.getClasses(focus, this.state.i18n?.classList)}>${value}</button>`
-		    }
-		    
-		});
+        if(this.state.i18n?.lang!=undefined){
+            Object.entries(this.state.i18n.lang).forEach(([key, value])=>{
+                let focus = ['button', 'lang'];
+                if (key === this.state.context.lang ){
+                    if (this.state.i18n?.selectedClassList!=undefined){
+                        lngButtons += `<button id="btn-${key}" ${this.getClasses(focus, this.state.i18n?.selectedClassList)}>${value}</button>`
+                    }else {
+                        focus.push('is-focused')
+                        lngButtons += `<button id="btn-${key}" ${this.getClasses(focus, this.state.i18n?.classList)}>${value}</button>`
+                    }
+                    focus.push('is-focused')
+                }else {
+                    lngButtons += `<button id="btn-${key}" ${this.getClasses(focus, this.state.i18n?.classList)}>${value}</button>`
+                }
+                
+            });
+        };
         return lngButtons;
-        }
     }
 
     #geti18n(){
@@ -172,11 +172,11 @@ export class LinkinBio extends AppElement {
                                     </figure>                           
                                 <div class="media-content pt-3" style="min-height:48px">
                                      ${el.href===undefined?`<button style="width:100%" data-source="${el.id}">`:`<a href="${el.href}" style="color: inherit; text-decoration: none;">`}
-                                    <p class="is-6 action">${el.text[this.state.context.lang]}</p>
+                                    <p id="content-${el.id}" class="is-6 action">${el.text[this.state.context.lang]}</p>
                                     ${el.href===undefined?`</button>`:`</a>`}
                                 </div>
                                 <figure class="media-right pt-1">
-                                    <p class="icon is-48x48 pt-3 option" data-source="${el.href===undefined?'/':el.href}">
+                                    <p class="icon is-48x48 pt-3 option" data-source="content-${el.id}" data-share="${el.href===undefined?'/':el.href}">
                                     ${icon(faEllipsisVertical).html[0]}
                                     </p>
                                 </figure>
