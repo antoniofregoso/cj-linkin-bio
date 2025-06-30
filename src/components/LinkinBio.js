@@ -1,5 +1,4 @@
-import { AppElement } from "@buyerjourney/bj-core";
-
+import { AppElement } from "@customerjourney/cj-core";
 import { icon } from "@fortawesome/fontawesome-svg-core";
 import { faEnvelope, faCircleCheck, faEllipsisVertical} from '@fortawesome/free-solid-svg-icons';
 import { faSquareXTwitter, faSquareFacebook, faSquareThreads, faSquareInstagram, faYoutube,  faLinkedin, faVk,
@@ -197,6 +196,8 @@ export class LinkinBio extends AppElement {
     }
 
     render(){
+
+        console.log('state', this.state);
         this.innerHTML =  /* html */`
         <div class="columns is-centered">
             <div class="column is-5 has-text-centered px-5" >
@@ -207,7 +208,7 @@ export class LinkinBio extends AppElement {
                     <div class="card-content p-1">
                         <div class="media">
                             <div class="media-content pt-3" style="min-height:44px">
-                                <p ${this.getClasses(["title","is-5","mb-0"], this.state.title?.classList)} ${this.setAnimation(this.state.title?.animation)}>${this.state.title?.text[this.state.context.lang]}${this.state.verified===true?`<sup style="fill:#4FB6EC;">${this.#ok}</sup>`:``}</p>
+                                <p ${this.getClasses(["title","is-5","mb-0"], this.state.title?.classList)} ${this.setAnimation(this.state.title?.animation)}>${this.state.title?.text[this.state.context.lang]}${this.state.verified===true?`${this.#ok}`:``}</p>
                                 <p ${this.getClasses([], this.state.subtitle?.classList)} ${this.setAnimation(this.state.subtitle?.animation)} >${this.state.subtitle?.text[this.state.context.lang]}</p>
                             </div>
                         </div>

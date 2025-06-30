@@ -1,17 +1,17 @@
 {
-  "name": "@buyerjourney/bj-linkin-bio",
-  "version": "1.4.1",
-  "description": "link in bio component of the BuyerJourneyJS project",
-  "main": "dist/LinkinBio",
-  "module": "src/LinkinBio",
+  "name": "@customerjourney/cj-linkin-bio",
+  "version": "1.5.0",
+  "description": "link in bio component of the CustomerJourneyJS project",
+  "main": "dist/index.js",
+  "module": "src/index.js",
   "scripts": {
-    "prod": "esbuild src/LinkinBio.js --bundle --minify  --outfile=dist/LinkinBio.min.js",
-    "build": "esbuild src/LinkinBio.js --bundle  --outfile=dist/LinkinBio.js",
+    "prod": "esbuild src/index.js --bundle --minify  --outfile=dist/index.min.js",
+    "build": "esbuild src/index.js --bundle  --outfile=dist/index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/antoniofregoso/bj-linkin-bio.git"
+    "url": "git+https://github.com/antoniofregoso/cj-linkin-bio.git"
   },
   "author": "Antonio Fregoso <antoniofregoso@protonmail.com>",
   "license": "GPL-3.0-or-later",
@@ -25,9 +25,9 @@
     "@fortawesome/free-solid-svg-icons": "^6.5.2"
   },
   "bugs": {
-    "url": "https://github.com/antoniofregoso/bj-linkin-bio/issues"
+    "url": "https://github.com/antoniofregoso/cj-linkin-bio.git/issues"
   },
-  "homepage": "https://buyerjourney.ninja/bj-linkin-bio",
+  "homepage": "https://customerjourney.ninja/documentation/linkin-bio/",
   "keywords": [
     "vanilla-javascripts",
     "link in bio",

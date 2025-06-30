@@ -1,7 +1,5 @@
-# bj-linkin-bio
+# cj-linkin-bio
 Link in bio component of the BuyerJourneyJS project
-## Sponsors
-[<img src="https://www.conference.com.mx/web/image/website/3/logo/Conference?unique=cb769b7">](https://www.conference.com.mx/comercializacion-digital)
 
 ## Functions
 1. Tree links can act as links or buttons and can contain a thumbnail.
@@ -29,9 +27,9 @@ Link in bio component of the BuyerJourneyJS project
 - eMail
 
 ## Documentation 
-- [bj-linkin-bio ](https://buyerjourney.ninja/bj-linkin-bio).
-- [BuyerJourneyJS project](https://buyerjourney.ninja/).
-- [Get started](https://buyerjourney.ninja/get-started).
+- [cj-linkin-bio ](https://customerjourney.ninja/documentation/linkin-bio/linkin-bio/).
+- [CustomerJourneyJS project](https://customerjourney.ninja/).
+- [Get started](https://customerjourney.ninja/getting-started/).
 
 ## bj-linkin-bio is made with
 - [bulma](https://bulma.io/).
