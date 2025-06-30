@@ -19,7 +19,7 @@
     "esbuild": "^0.20.1"
   },
   "dependencies": {
-    "@buyerjourney/bj-core": "^1.0.1",
+    "@customerjourney/bj-core": "^1.0.1",
     "@fortawesome/fontawesome-svg-core": "^6.5.2",
     "@fortawesome/free-brands-svg-icons": "^6.5.2",
     "@fortawesome/free-solid-svg-icons": "^6.5.2"
