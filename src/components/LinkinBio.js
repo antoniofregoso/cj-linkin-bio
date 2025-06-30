@@ -196,8 +196,6 @@ export class LinkinBio extends AppElement {
     }
 
     render(){
-
-        console.log('state', this.state);
         this.innerHTML =  /* html */`
         <div class="columns is-centered">
             <div class="column is-5 has-text-centered px-5" >
