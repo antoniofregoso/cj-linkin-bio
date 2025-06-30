@@ -1,5 +1,5 @@
 (() => {
-  // ../../../../node_modules/@customerjourney/cj-core/src/components/AppElement.js
+  // node_modules/@customerjourney/cj-core/src/components/AppElement.js
   var AppElement = class extends HTMLElement {
     #default = {};
     /**
@@ -237,7 +237,7 @@
   };
   customElements.define("app-element", AppElement);
 
-  // ../../../../node_modules/@customerjourney/cj-core/src/components/AppPage.js
+  // node_modules/@customerjourney/cj-core/src/components/AppPage.js
   var AppPage = class extends AppElement {
     #default = {
       events: {
@@ -503,7 +503,7 @@
   };
   customElements.define("app-page", AppPage);
 
-  // ../../../../node_modules/@customerjourney/cj-core/src/components/utils.js
+  // node_modules/@customerjourney/cj-core/src/components/utils.js
   function slugify(input) {
     if (!input)
       return "";
@@ -514,7 +514,7 @@
     return slug;
   }
 
-  // ../../../../node_modules/@customerjourney/cj-core/src/components/PageFooter.js
+  // node_modules/@customerjourney/cj-core/src/components/PageFooter.js
   var PageFooter = class extends AppElement {
     #default = {};
     constructor(props = {}) {
@@ -540,7 +540,7 @@
   };
   customElements.define("page-footer", PageFooter);
 
-  // ../../../../node_modules/@fortawesome/fontawesome-svg-core/index.mjs
+  // node_modules/@fortawesome/fontawesome-svg-core/index.mjs
   function ownKeys(object, enumerableOnly) {
     var keys = Object.keys(object);
     if (Object.getOwnPropertySymbols) {
@@ -2981,7 +2981,7 @@
   var text = api.text;
   var counter = api.counter;
 
-  // ../../../../node_modules/@fortawesome/free-solid-svg-icons/index.mjs
+  // node_modules/@fortawesome/free-solid-svg-icons/index.mjs
   var faCircleCheck = {
     prefix: "fas",
     iconName: "circle-check",
@@ -3018,7 +3018,7 @@
     icon: [512, 512, ["mail-forward"], "f064", "M307 34.8c-11.5 5.1-19 16.6-19 29.2v64H176C78.8 128 0 206.8 0 304C0 417.3 81.5 467.9 100.2 478.1c2.5 1.4 5.3 1.9 8.1 1.9c10.9 0 19.7-8.9 19.7-19.7c0-7.5-4.3-14.4-9.8-19.5C108.8 431.9 96 414.4 96 384c0-53 43-96 96-96h96v64c0 12.6 7.4 24.1 19 29.2s25 3 34.4-5.4l160-144c6.7-6.1 10.6-14.7 10.6-23.8s-3.8-17.7-10.6-23.8l-160-144c-9.4-8.5-22.9-10.6-34.4-5.4z"]
   };
 
-  // ../../../../node_modules/@customerjourney/cj-core/src/components/PageHeader.js
+  // node_modules/@customerjourney/cj-core/src/components/PageHeader.js
   var PageHeader = class extends AppElement {
     #default = {
       brand: {
@@ -3203,7 +3203,7 @@
   };
   customElements.define("page-header", PageHeader);
 
-  // ../../../../node_modules/@fortawesome/free-brands-svg-icons/index.mjs
+  // node_modules/@fortawesome/free-brands-svg-icons/index.mjs
   var faVk = {
     prefix: "fab",
     iconName: "vk",
