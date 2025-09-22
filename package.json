@@ -1,6 +1,6 @@
 {
   "name": "@customerjourney/cj-linkin-bio",
-  "version": "1.5.2",
+  "version": "1.5.4",
   "description": "link in bio component of the CustomerJourneyJS project",
   "main": "dist/index.js",
   "module": "src/index.js",
@@ -22,7 +22,8 @@
     "@customerjourney/cj-core": "^1.4.0",
     "@fortawesome/fontawesome-svg-core": "^6.5.2",
     "@fortawesome/free-brands-svg-icons": "^6.5.2",
-    "@fortawesome/free-solid-svg-icons": "^6.5.2"
+    "@fortawesome/free-solid-svg-icons": "^6.5.2",
+    "remarkable": "^2.0.1"
   },
   "bugs": {
     "url": "https://github.com/antoniofregoso/cj-linkin-bio.git/issues"

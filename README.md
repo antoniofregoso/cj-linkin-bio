@@ -1,6 +1,7 @@
 # cj-linkin-bio
-Link in bio component of the BuyerJourneyJS project
-
+Link in bio component of the BuyerJourneyJS project 
+## CustumerJourney.js
+This library is part of the [CustumerJourney.js](https://customerjourney.ninja/) project. Vanilla JavaScript libraries optimized for creating sales funnels with hyper-personalized customer experience powered by artificial intelligence.
 ## Functions
 1. Tree links can act as links or buttons and can contain a thumbnail.
 2. Accepts bulma styles and animations from BuyerJourneyJS.
@@ -38,3 +39,5 @@ Link in bio component of the BuyerJourneyJS project
 
 ## License
 bj-linkin-bio is [GPL-3.0-or-later](./LICENSE).
+## Sponsor
+[Become a CustumerJourney.js Sponsor](https://customerjourney.ninja/sponsor/).

@@ -3543,7 +3543,6 @@
       return links2;
     }
     render() {
-      console.log("state", this.state);
       this.innerHTML = /* html */
       `
         <div class="columns is-centered">
@@ -3587,7 +3586,7 @@
   };
   customElements.define("linkin-bio", LinkinBio);
 
-  // ../../../../node_modules/remarkable/dist/esm/index.browser.js
+  // node_modules/remarkable/dist/esm/index.browser.js
   var textarea;
   function decodeEntity(name) {
     textarea = textarea || document.createElement("textarea");
