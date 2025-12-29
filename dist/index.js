@@ -3554,7 +3554,7 @@
                     <div class="card-content p-1">
                         <div class="media">
                             <div class="media-content pt-3" style="min-height:44px">
-                                <p ${this.getClasses(["title", "is-5", "mb-0"], this.state.title?.classList)} ${this.setAnimation(this.state.title?.animation)}>${this.state.title?.text[this.state.context.lang]}${this.state.verified === true ? `${this.#ok}` : ``}</p>
+                                <p ${this.getClasses(["title", "is-5", "mb-0"], this.state.title?.classList)} ${this.setAnimation(this.state.title?.animation)}>${this.state.title?.text[this.state.context.lang]}${this.state.title?.verified === true ? `<span class="ml-1">${this.#ok}</span>` : ``}</p>
                                 <p ${this.getClasses([], this.state.subtitle?.classList)} ${this.setAnimation(this.state.subtitle?.animation)} >${this.state.subtitle?.text[this.state.context.lang]}</p>
                             </div>
                         </div>

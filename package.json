@@ -1,6 +1,6 @@
 {
   "name": "@customerjourney/cj-linkin-bio",
-  "version": "1.5.4",
+  "version": "1.5.5",
   "description": "link in bio component of the CustomerJourneyJS project",
   "main": "dist/index.js",
   "module": "src/index.js",
