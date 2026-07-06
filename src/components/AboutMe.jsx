@@ -1,3 +1,4 @@
+import { render } from "preact";
 import { AppElement } from "@customerjourney/cj-core";
 import { Remarkable } from "remarkable";
 
@@ -22,7 +23,7 @@ export class AboutMe extends AppElement {
     static get observedAttributes() {
         return ["active"];
       }
-      
+
     attributeChangedCallback(name, old, now) {
         console.log(name, old, now)
         if (name=='active'&&now==='1'){
@@ -39,28 +40,24 @@ export class AboutMe extends AppElement {
         }
     }
 
-    #getContent(){
-        return /*HTML*/`
-            <div class="modal-card">
-                <header class="modal-card-head">
-                <p class="modal-card-title">${this.state.title?.text[this.state.context.lang]}</p>
-                <button class="delete" aria-label="close"></button>
-                </header>
-                <section class="modal-card-body content">
-                ${this.md.render(this.state.content?.text[this.state.context.lang])}
-                </section>
-            </div>
-        `;
-    }
-
-
-    render(){this.innerHTML =  /* html */`
-        <div class="modal">
-            <div class="modal-background"></div>
-                ${this.#getContent()}
-        </div>
-        `;
-    	this.addEvents();
+    render(){
+        render(
+            <div class="modal">
+                <div class="modal-background"></div>
+                <div class="modal-card">
+                    <header class="modal-card-head">
+                        <p class="modal-card-title">{this.state.title?.text[this.state.context.lang]}</p>
+                        <button class="delete" aria-label="close"></button>
+                    </header>
+                    <section
+                        class="modal-card-body content"
+                        dangerouslySetInnerHTML={{ __html: this.md.render(this.state.content?.text[this.state.context.lang]) }}
+                    />
+                </div>
+            </div>,
+            this
+        );
+        this.addEvents();
     }
 
 }
