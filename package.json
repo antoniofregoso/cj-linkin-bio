@@ -1,6 +1,6 @@
 {
   "name": "@customerjourney/cj-linkin-bio",
-  "version": "1.5.5",
+  "version": "1.6.0",
   "description": "link in bio component of the CustomerJourneyJS project",
   "type": "module",
   "main": "dist/index.js",
@@ -40,7 +40,7 @@
   "bugs": {
     "url": "https://github.com/antoniofregoso/cj-linkin-bio.git/issues"
   },
-  "homepage": "https://customerjourney.ninja/documentation/linkin-bio/",
+  "homepage": "https://antoniofregoso.github.io/customerjourney/documentation/linkin-bio/",
   "keywords": [
     "vanilla-javascripts",
     "link in bio",
